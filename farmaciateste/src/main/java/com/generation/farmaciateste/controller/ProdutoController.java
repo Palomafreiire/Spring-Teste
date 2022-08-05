@@ -45,6 +45,11 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
+	@GetMapping("/preco_incial/{inicio}/preco_final/{fim}")
+	public ResponseEntity<List<ProdutoModel>> getByPrecoEntre(@PathVariable BigDecimal inicio, @PathVariable BigDecimal fim){
+		return ResponseEntity.ok(produtoRepository.findAllByPrecoBetween(inicio, fim));
+	}
+
 	@PostMapping
 	public ResponseEntity<ProdutoModel> post (@Valid @RequestBody ProdutoModel produto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));

@@ -14,4 +14,5 @@ public interface ProdutoRepository extends JpaRepository<ProdutoModel, Long> {
 	
 		public List<ProdutoModel> findAllByNomeContainingIgnoreCase (@Param ("nome") String nome );
 			
+		public List<ProdutoModel> findAllByPrecoBetween(@Param ("inicio") BigDecimal inicio, @Param ("fim") BigDecimal fim);
 }
